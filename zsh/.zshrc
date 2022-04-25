@@ -75,9 +75,6 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
-## get rid of command not found ##
-alias cd..='cd ..'
-
 ## a quick way to get out of current directory ##
 alias ..='cd ..'
 alias ...='cd ../../../'
@@ -85,11 +82,6 @@ alias ....='cd ../../../../'
 alias .....='cd ../../../../'
 alias .4='cd ../../../../'
 alias .5='cd ../../../../..'
-
-## Colorize the grep command output for ease of use (good for log files)##
-alias grep='grep --color=auto'
-alias egrep='egrep --color=auto'
-alias fgrep='fgrep --color=auto'
 
 # List network ports
 alias ports='netstat -tulanp'
@@ -105,9 +97,6 @@ alias header='curl -I'
 
 # find out if remote server supports gzip / mod_deflate or not #
 alias headerc='curl -I --compress'
-
-# update on one command
-alias update='sudo apt-get update && sudo apt-get upgrade -y'
 
 # Load plugins
 

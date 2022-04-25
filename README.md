@@ -33,6 +33,8 @@ run the setup script
 ./setup
 ```
 
+If tou dont have chsh you will need to run `sudo usermod --shell /bin/zsh $USER`
+
 ## 03 - Possible problems
 
 The stow program will refuse to link a directory or file if you already have the config file there, this is to prevent it from replacing your config files, so if you see (using .gitconfig as example) a message like:

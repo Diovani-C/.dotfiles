@@ -68,17 +68,28 @@
 
     if [[ ! -d "$NVIMDIR" ]]; then
         printf "\n### Installing AtroNvim \n"
+
         git clone https://github.com/AstroNvim/AstroNvim "$NVIMDIR"
         nvim +PackerSync
 
         printf "\n### AtroNvim installed! \n"
     fi
 
+# Install Miniconda
+    CONDA=~/miniconda3
+
+    if [[ ! -d "$CONDA" ]]; then
+        printf "\n### Installing Miniconda\n"
+        curl -L https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh > miniconda.sh
+        bash miniconda.sh -p "$CONDA" 
+        rm -f miniconda.sh
+    fi
+
 # Symlink dotfiles
 
     printf "\n### Linking config files\n"
 
-    read -r -p "This may overwrite existing files in your home directory. Are you sure? [y/N]" response 
+    read -r -p "Do you want to link all the config files? [y/N]" response 
     response=${response,,}
     if [[ "$response" =~ ^(yes|y)$ ]]; then
         cd "$(dirname "${BASH_SOURCE[0]}")"

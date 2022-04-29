@@ -1,52 +1,42 @@
-call plug#begin('~/.local/share/nvim/plugged')
-    Plug 'morhetz/gruvbox'
-    Plug 'phaazon/hop.nvim'
-    Plug 'lukas-reineke/indent-blankline.nvim'
-    Plug 'blackcauldron7/surround.nvim'
-    Plug 'norcalli/nvim-colorizer.lua'
-    Plug 'kyazdani42/nvim-web-devicons'
-    Plug 'b3nj5m1n/kommentary'
-    Plug 'beauwilliams/focus.nvim'
-    Plug 'alvarosevilla95/luatab.nvim'
-    Plug 'nvim-lualine/lualine.nvim'
-    Plug 'nvim-lua/plenary.nvim'
-    Plug 'nvim-telescope/telescope.nvim'
-    Plug 'neovim/nvim-lspconfig'
-    Plug 'glepnir/lspsaga.nvim'
-    Plug 'williamboman/nvim-lsp-installer'
-    Plug 'windwp/nvim-autopairs'
-    Plug 'TimUntersberger/neogit'
-    Plug 'lewis6991/gitsigns.nvim'
-    Plug 'mfussenegger/nvim-dap'
-    Plug 'L3MON4D3/LuaSnip'
-    Plug 'saadparwaiz1/cmp_luasnip'
-    Plug 'hrsh7th/cmp-nvim-lsp'
-    Plug 'hrsh7th/cmp-buffer'
-    Plug 'hrsh7th/cmp-path'
-    Plug 'hrsh7th/cmp-cmdline'
-    Plug 'hrsh7th/nvim-cmp'
-    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-call plug#end()
+local config = {
 
-source $HOME/.config/nvim/modules/base.vim
-source $HOME/.config/nvim/modules/navigation.vim
-source $HOME/.config/nvim/modules/appearance.vim
-source $HOME/.config/nvim/modules/lualine.lua
-source $HOME/.config/nvim/modules/hop.lua
-source $HOME/.config/nvim/modules/focus.lua
-source $HOME/.config/nvim/modules/web-devicons.lua
-source $HOME/.config/nvim/modules/colorizer.lua
-source $HOME/.config/nvim/modules/surround.lua
-source $HOME/.config/nvim/modules/indent-blankline.lua
-source $HOME/.config/nvim/modules/telescope.lua
-source $HOME/.config/nvim/modules/gitsigns.lua
-source $HOME/.config/nvim/modules/neogit.lua
-source $HOME/.config/nvim/modules/autopairs.lua
-source $HOME/.config/nvim/modules/luatab.lua
-source $HOME/.config/nvim/modules/dap.lua
-source $HOME/.config/nvim/modules/cmp.lua
-source $HOME/.config/nvim/modules/luasnip.lua
-source $HOME/.config/nvim/modules/treesitter.lua
-source $HOME/.config/nvim/modules/lspsaga.lua
-source $HOME/.config/nvim/modules/lspinstaller.lua
-source $HOME/.config/nvim/modules/lspconfig.lua
+  -- Set colorscheme
+  colorscheme = "ayu",
+
+  -- Configure plugins
+  plugins = {
+    -- Add plugins, the packer syntax without the "use"
+    init = {
+      {"ayu-theme/ayu-vim", as = "ayu"}
+      -- { "andweeb/presence.nvim" },
+      -- {
+      --   "ray-x/lsp_signature.nvim",
+      --   event = "BufRead",
+      --   config = function()
+      --     require("lsp_signature").setup()
+      --   end,
+      -- },
+    },
+  },
+
+  -- This function is run last
+  -- good place to configure mappings and vim options
+  polish = function()
+    local map = vim.keymap.set
+    local set = vim.opt
+    -- Set options
+    set.shiftwidth = 4 -- Number of space inserted for indentation
+    set.tabstop = 4 -- Number of space in a tab
+    set.wildmode = { "longest", "list", "full"} -- Auto complete file names
+    set.backspace = {"indent", "eol", "start"} -- Allow backspace end of line
+    set.list = true -- Enable invisble characters
+    set.listchars = {tab = "⤚-", space = "·", eol = "¬", nbsp = "⁃"} -- Show "invisible" characters
+
+    -- Set key bindings
+    map("n", "<C-s>", ":w!<CR>")
+
+  end,
+}
+-- set guifont=JetBrains_Mono_Nerd_Font:h14
+
+return config

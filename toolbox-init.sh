@@ -20,7 +20,7 @@ fi
 bash sudo dnf update -y
 
 # Install essetial dev packages
-sudo dnf install -y zsh nodejs rustc cargo pip code neovim python3-neovim ripgrep ncdu htop elixir erlang julia pinentry pinentry-gtk
+sudo dnf install -y zsh nodejs rustc cargo pip code neovim python3-neovim ripgrep ncdu htop elixir erlang julia pinentry pinentry-gtk gcc-c++ podman buildah cmake
 
 # Install pnpm
 printf "\n### Installing pnpm\n"
